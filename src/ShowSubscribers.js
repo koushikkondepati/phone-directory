@@ -1,0 +1,73 @@
+import React from 'react';
+import Header from './Header';
+import './ShowSubscribers.css';
+import './Header.css';
+import { render } from '@testing-library/react';
+
+
+class ShowSubscribers extends React.Component {
+  // let subscribers = [
+  //   {
+  //     id: 1,
+  //     name: "Shilpa Bhat",
+  //     phone: "8888888888"
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Srishti Gupta",
+  //     phone: "9999999999"
+  //   }
+  // ];
+
+  // constructor()
+  // {
+  //   super();
+  //   this.state = {
+  //     subscribersListToShow: []
+  //   }
+  // }
+
+  // componentDidMount()
+  // {
+  //   let newSubscribers = {
+  //     id:1,
+  //     name:'koushik kondepati',
+  //     phone:'9877481041'
+  //   }
+  //   let subscribersList = this.state.subscribersListToShow;
+  //   subscribersList.push(newSubscribers);
+  //   this.setState({subscribersListToShow:subscribersList})
+  // }
+
+  render()
+  {
+    return (
+      <div className="component-container">
+          <Header heading="phone directory"/> 
+          <div className="component-body-container">
+          <button className="custom-btn add-btn">Add</button>
+          <div className="grid-container heading-container">
+            <span className="grid-item name-heading">Name</span>
+            <span className="grid-item phone-heading">Phone</span>
+            
+          </div>
+          {
+              this.props.subscribersList.map(sub => {
+                return <div key={sub.id} className="grid-container">
+                  <span className="grid-item">{sub.name}</span>
+                  <span className="grid-item">{sub.phone}</span>
+                  <span className="grid-item action-btn-container">
+                <button className="custom-btn delete-btn">Delete</button>
+                </span>
+                </div>
+  
+              })
+            }
+          </div>
+      </div>
+    );
+  }
+  
+}
+
+export default ShowSubscribers;
